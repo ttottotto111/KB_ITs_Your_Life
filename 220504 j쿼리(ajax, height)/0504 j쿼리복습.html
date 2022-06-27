@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        #outer{
+            width: 15em;
+            height: 12em;
+            border: 2px solid blue;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        button{
+            margin-right: 0.5em;
+            margin-left: 0.5em;
+            height: 4em;
+        }
+    </style>
+    <script>
+        var count = 0
+
+        function btn1_click()
+        {
+            count++
+            $("#msg").text(count)
+        }
+
+        function btn2_click()
+        {
+            count--
+            $("#msg").text(count)
+        }
+
+        function click_btn()
+        {
+            dict = new Array()
+            dict["카운터 증가"] = btn1_click   
+            dict["카운터 감소"] = btn2_click   
+
+            dict[$(this).text()]()
+        }
+    </script>
+    <script>
+         $(function(){
+        //     $("#btn1").click(btn1_click)
+        //     $("#btn2").click(btn2_click)
+
+            // 딕셔너리 사용
+            $("button").click(click_btn)
+         })
+
+        
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <h1>클릭 카운터</h1>
+        <button id="btn1">카운터 증가</button>
+        <button id="btn2">카운터 감소</button>
+        <div>카운터</div>
+        <div id="msg"></div>
+    </div>
+</body>
+</html>

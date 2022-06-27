@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jq 01</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        //js 함수
+        window.onload = function() //HTML코드가 완전히 전송되면 실행
+        {  
+            $("h3").css("color","green")
+        };
+
+        //jq 함수
+        $(function(){
+            $("h4").css("color","pink")
+        })
+    </script>
+</head>
+<body>
+    <h1>Hello jquery</h1>
+    <h2>Hello jquery</h2>
+    <h3>Hello jquery</h3>
+    <h4>Hello jquery</h4>
+
+    <script>
+        // js 사용시=> 첫번째 항목만 변경
+        document.querySelector("h1").style.color="red"
+
+        h1a = document.querySelectorAll("h1")
+        for(let i=0; i<h1a.length;i++)
+        {
+            h1a[i].style.color="red"
+        }
+    </script>
+    <script>
+        // jq 사용
+        $("h2").css("color","blue")
+    </script>
+</body>
+</html>

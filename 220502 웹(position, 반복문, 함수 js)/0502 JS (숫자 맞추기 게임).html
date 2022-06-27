@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞추기</title>
+    <style>
+        #msg > span{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //1~100사이 난수 
+        com_num = Math.random()
+        com_num = com_num*100
+        com_num +=1
+        //버림
+        com_num = Math.floor(com_num)
+        //--------------------------------------//
+        com_num = Math.floor(Math.random()*100+1)
+    </script>
+    <script>
+        function check_num()
+        {
+            input_num = document.querySelector("#user_num").value
+            input_num = parseInt(input_num)
+            var msg=""
+            if(input_num == com_num)
+            {
+                //msg="정답입니다."
+                msg = "#msg1"
+                document.querySelector("#success_audio").play()  
+            }
+            else if(input_num<com_num)
+            {
+                //msg = "숫자가 작습니다."
+                msg = "#msg3"
+                document.querySelector("#fail_audio").play()
+            }
+            else
+            {
+                //msg ="숫자가 큽니다."
+                msg = "#msg2"
+                document.querySelector("#fail_audio").play()
+            }
+
+            //document.querySelector("#msg").innerHTML = msg
+            document.querySelector("#msg1").style.display = "none"
+            document.querySelector("#msg2").style.display = "none"
+            document.querySelector("#msg3").style.display = "none"
+            document.querySelector(msg).style.display = "inline"
+        }
+    </script>
+
+    <h2>숫자 맞추기 게임</h2>
+    <p>1~100사이 난수를 맞춰보세요</p>
+    <div>
+        <span>숫자를 입력 하세요.</span>
+        <br>
+        <input id="user_num" size="10">
+        <button id="check_btn" onclick="check_num()">정답 확인</button>
+        <div id="msg">
+            <span id="msg1">정답입니다.</span>
+            <span id="msg2">숫자가 큽니다.</span>
+            <span id="msg3">숫자가 작습니다.</span>
+        </div>
+        <audio id="success_audio" src="success.MP3"></audio>
+        <audio id="fail_audio" src="엄.mp3"></audio>
+    </div>
+</body>
+</html>

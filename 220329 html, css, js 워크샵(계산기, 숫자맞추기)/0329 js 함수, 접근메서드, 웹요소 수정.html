@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js</title>
+        <style>
+            li:hover{background:yellow;}
+            form span{display:none;}
+            input:focus+span{display:inline;}
+        </style>
+      
+        
+    </head>
+    <body>
+        <h1>변수생성</h1>
+        <form>
+            이름입력 : <input type="text"><span>작성자의 이름 입력</span> <br>
+            비밀번호 : <input type="password"><span>6~8자리 입력</span> <br>
+            생년월일 : <input type="number"><span>ex)19971119</span>
+            
+            <hr>
+            
+            <ul>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+            </ul>        
+        </form>
+        <script>
+            var count = 0
+            function inc(){
+                count += 1
+                msg_div = document.querySelector("#msg")
+                msg_div.innerHTML = "count = "+count
+            }
+            function re(){
+                count = 0
+                msg_div = document.querySelector("#msg")
+                msg_div.innerHTML = "count = "+count
+            }
+        </script>
+        <button onclick="inc()">증가</button>
+        <button onclick="re()">초기화</button>
+        <div id="msg"></div>      
+    </body>
+</html>

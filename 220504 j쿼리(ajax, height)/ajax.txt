@@ -1,0 +1,3 @@
+Ajax : 규칙
+- SOP : same origin policy 동일 도메인 정책
+- Ajax통신은 HTML전송 서버만 통신 가능

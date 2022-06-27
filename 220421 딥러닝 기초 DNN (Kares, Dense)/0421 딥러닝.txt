@@ -1,0 +1,6 @@
+Artifitial 인공
+Neeral 신경
+Net 망
+NN 의 근간은 Logistic Regression
+입력값 *가중치 + 편향 => 예측값(선형 회귀)
+=> Sigmoid()적용 => 성공할 확률 ->가설

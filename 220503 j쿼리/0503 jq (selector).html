@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jq 02 선택자 테스트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("h3").css("color","green")
+            $(".list").css("border","3px dotted blue")
+
+            $("#btn_on").on("click", function(){
+                $("li").css("border","2px dotted red")
+            })
+            $("#btn_off").on("click", function(){
+                $("li").css("border","0px")
+            })
+        })
+    </script>
+</head>
+<body>
+    <h3>기본 선택자</h3>
+    <div class="my list">
+        <ul>
+            <li class="class">태그 선택자 : 기본 태그를 선택합니다.</li>
+            <li id="id">클래스 선택자 : 클래스 태그를 선택합니다.</li>
+            <li>아이디 선택자 : 아이디 태그를 선택합니다.</li>
+            <li>그룹 선택자 : 여러가지 태그를 선택합니다.</li>
+            <li>전체 선택자 : 전체 태그를 선택합니다.</li>
+        </ul>
+    </div>
+
+    <div>
+        <button id="btn_on">li 빨간 테두리적용</button>
+        <button id="btn_off">li 빨간 테두리해제</button>
+    </div>
+    
+    <div class="choice">
+        <a href="#" class="off1">리셋</a>
+        <a href="#" class="btn1">클릭하면 <em>li 태그를</em>를 선택합니다.</a>
+        <a href="#" class="btn2">클릭하면 <em>클래스 선택자</em>를 선택합니다.</a>
+        <a href="#" class="btn3">클릭하면 <em>아이디 선택자</em>를 선택합니다.</a>
+        <a href="#" class="btn4">클릭하면 <em>아이디와 클래스 선택자</em>를 선택합니다.</a>
+        <a href="#" class="btn5">클릭하면 <em>전체 선택자</em>를 선택합니다.</a>
+    </div>
+
+</body>
+</html>

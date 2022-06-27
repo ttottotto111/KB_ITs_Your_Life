@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jq 계산기</title>
+<style type="text/css">
+	#calc{
+		width: 20em;
+		border: 1px solid black;
+		margin-left: auto; 
+		margin-right: auto;
+	}
+
+	#pad{
+            width: 14.5em;
+            height: 16em;
+            border: 1px solid red;
+			margin-top:15px;
+			margin-left: auto; 
+			margin-right: auto;
+        }
+
+	#pad > input{
+        width: 4em;
+        height: 4em;
+		margin-top:10px;
+		margin-left: auto; 
+		margin-right: auto;
+    }
+
+	#calc > #result{
+		margin-left: 25px; 
+		margin-right: auto;
+	}
+
+	#msg > h1{
+		text-align: center;
+	}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(function button_click(){
+	$("#pad > input").click(function(){
+		if($(this).val() == "CE")
+		{
+			// 초기화
+			$("#result").val("")
+		}
+		else if($(this).val() == "=")
+		{
+			var num = $("#result").val()
+            var result = eval(num)
+            $("#result_text").append("<li>"+num+ " = " + result + "</li> <br>")
+			$("#result").val("")
+		}
+		else{
+			//숫자일경우
+			$("#result").val($("#result").val() + $(this).val())
+		}
+		
+	})
+})
+
+$(function() {
+	button_click()
+});
+
+</script>
+</head>
+<body>
+	<div id="calc">
+		<input type="text" id="result" name="result" placeholder="0.0" size=33px/>		
+		<div id="pad">
+			<input type="button" id="7" value="7" class="button" />
+			<input type="button" id="8" value="8" class="button" />
+			<input type="button" id="9" value="9" class="button" />
+			<input type="button" id="+" value="+" class="button" />
+			<br>
+			<input type="button" id="4" value="4" class="button" />
+			<input type="button" id="5" value="5" class="button" />
+			<input type="button" id="6" value="6" class="button" />
+			<input type="button" id="-" value="-" class="button" />
+			<br>
+			<input type="button" id="1" value="1" class="button" />
+			<input type="button" id="2" value="2" class="button" />
+			<input type="button" id="3" value="3" class="button" />
+			<input type="button" id="*" value="*" class="button" />
+			<br>
+			<input type="button" id="0" value="0" class="button" />
+			<input type="button" id="CE" value="CE" class="button" />
+			<input type="button" id="=" value="=" class="button" />
+			<input type="button" id="/" value="/" class="button" />
+		</div>	
+		<div id="msg">
+			<h1>결과 이력</h1>
+			<ol id="result_text"></ol>
+		</div>	
+	</div>
+</body>
+</html>

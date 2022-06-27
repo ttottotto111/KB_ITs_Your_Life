@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>숫자맞추기 게임</title>
+        <script>
+            // 0.0 ~ 99.9999 +1  -> 1.0 ~ 100.999999
+            var com_num = Math.random() * 100 + 1 
+            com_num = Math.floor( com_num ) // 소수이하 버림
+            console.log("com_num="+com_num)
+            var count = 1
+        </script>
+        <script>
+            function check_num(){
+                msg = document.querySelector("#msg")
+                un = document.querySelector("#user_num").value
+                if( com_num == un ){
+                    msg.innerHTML += count+"번째 시도 : 정답입니다<br>"
+                    count+=1
+                    return
+                }
+                if(com_num < un){
+                    msg.innerHTML += count+"번째 시도 : 낮춰주세요<br>" 
+                    document.querySelector("#user_num").value = ""
+                    count +=1
+                }else{
+                    msg.innerHTML += count+"번째 시도 : 높여주세요<br>"
+                    document.querySelector("#user_num").value = ""
+                    count +=1
+                }
+                if(count>10 && unum != cnum){msg.innerHTML += "실패"}
+            }
+        </script>
+    </head>
+    <body>
+        <h1>숫자맞추기 게임 v0.1</h1>
+        <p>1~100사이 컴퓨터가 정한 숫자를 10번이내로 맞춰 보세요</p>
+
+        <input type="number" id="user_num" value="">
+        <button onclick="check_num()">정답확인</button>
+        <div id="msg"></div>
+
+    </body>
+</html>

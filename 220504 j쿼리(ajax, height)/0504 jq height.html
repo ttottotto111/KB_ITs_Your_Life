@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Sample</title>
+    <style>
+        .circle {position: relative; width: 100px; height: 100px; color: #c7254e; background-color: #f9f2f4; border-radius: 50%; border: 1px dashed #a51a3d; text-align: center; line-height: 100px;}
+        a {border: 1px solid #5f6368; padding: 7px 20px 5px 20px; display: inline-block; border-radius: 20px; text-decoration: none;}
+    </style>
+</head>
+<body>
+    
+    <h3>속성(ATTRIBUTES)</h3>
+    <div class="list1">
+        <div class="circle">circle</div>
+        <p class="desc">
+            <span>offset().left = </span><span class="ol">0</span><br>
+            <span>offset().top = </span><span class="ot">0</span><br>
+            <span>position().left = </span><span class="pl">0</span><br>
+            <span>position().top = </span><span class="pt">0</span><br>
+        </p>
+    </div>
+    
+    <div class="choice1">
+        <a href="#" class="off1">리셋</a><br>
+        <a href="#" class="btn1">클릭하면 원의 .offset() <em>left</em> 좌표값을 표현합니다.</a>
+        <a href="#" class="btn2">클릭하면 원의 .offset() <em>top</em> 좌표값을 표현합니다.</a><br>
+        <a href="#" class="btn3">클릭하면 원의 .position() <em>left</em> 좌표값을 표현합니다.</a>
+        <a href="#" class="btn4">클릭하면 원의 .position() <em>top</em> 좌표값을 표현합니다.</a>
+        <br>
+        <button id="to_left">왼쪽으로</button>
+        <button id="to_right">오른쪽으로</button>
+        <br>
+        <button id="to_up">위로</button>
+        <button id="to_down">아래로</button>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $("#to_left").click(function(){
+            left = $(".list1 .circle").css("left")
+            left = parseInt(left) -10+"px"
+            $(".list1 .circle").css("left",left)
+        })
+
+        $("#to_right").click(function(){
+            left = $(".list1 .circle").css("left")
+            left = parseInt(left) +10+"px"
+            $(".list1 .circle").css("left",left)
+        })
+
+        $("#to_up").click(function(){
+            top = $(".list1 .circle").css("top")
+            top = parseInt(top) +10+"px"
+            $(".list1 .circle").css("top",top)
+        })
+
+        $(".choice1 .off1").click(function(e){
+            e.preventDefault();
+            $(".list1 .desc").text("");
+        });
+        $(".choice1 .btn1").click(function(e){
+            e.preventDefault();
+            $(".list1 .desc .ol").text( $(".list1 .circle").offset().left + "px" );
+        });
+        $(".choice1 .btn2").click(function(e){
+            e.preventDefault();
+            $(".list1 .desc .ot").text( $(".list1 .circle").offset().top + "px" );
+        });
+        $(".choice1 .btn3").click(function(e){
+            e.preventDefault();
+            $(".list1 .desc .pl").text( $(".list1 .circle").position().left + "px" );
+        });
+        $(".choice1 .btn4").click(function(e){
+            e.preventDefault();
+            $(".list1 .desc .pt").text( $(".list1 .circle").position().top + "px" );
+        });
+    </script>
+
+</body>
+</html>

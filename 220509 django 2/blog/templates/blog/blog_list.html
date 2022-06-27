@@ -1,0 +1,21 @@
+<a href="{% url 'create' %}">등록</a>
+{% if posts %}
+{% for post in posts %}
+
+<hr>
+
+<div>
+    <div>
+        {{ post.title }}
+        <a href="/blog/update/{{post.id}}">수정</a>
+        <a href="/blog/delete/{{post.id}}">삭제</a>
+    </div>
+    <blockquote>
+        {{ post.content }}
+    </blockquote>
+</div>
+</div>
+{% endfor %}
+
+<hr>
+{% endif %}

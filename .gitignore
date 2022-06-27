@@ -1,0 +1,11 @@
+# csv파일 제외
+*.csv
+
+# 딥 러닝용 사진, 동영상 파일 제외
+downloads/
+cat_dog/
+others/
+*.zip
+
+# 장고 라이브러리 파일 제외
+Lib/

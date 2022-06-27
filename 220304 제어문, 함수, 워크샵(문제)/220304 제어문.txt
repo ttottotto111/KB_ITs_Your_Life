@@ -1,0 +1,10 @@
+for 문
+
+반복가능 구문 (iterable)
+list, tuple, str ~
+1개값 : 스칼라
+여러값 : 벡터
+
+break 반복문 종료
+continue 반복문 넘기기
+pass 아무작업 하지않음, 임시함수/무한 반복문 작성시 사용

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery filter</title>
+    <style>
+        li.select:before {content:'Select'; padding: 4px 4px 2px 4px; font-size: 90%; color: #3d90b7; white-space: nowrap; background-color: #e7f6fd; border-radius: 4px;border: 1px dashed #3d90b7;}
+        .rLine {padding: 4px 4px 2px 10px; font-size: 90%; color: #c7254e; white-space: nowrap; background-color: #f9f2f4; border-radius: 4px; border: 1px dashed #a51a3d;}
+        .choice a {border: 1px solid #5f6368; padding: 7px 20px 5px 20px; display: inline-block; border-radius: 20px; text-decoration: none;}
+    </style>
+</head>
+<body>
+    
+    <h3>기본 필터 선택자</h3>
+    <div class="list">
+        <ul>
+            <li>:eq()</li>
+            <li>:gt()</li>
+            <li>:lt()</li>
+            <li>:header</li>
+            <li>:first</li>
+            <li>:last</li>
+            <li>:odd</li>
+            <li>:even</li>
+            <li>:not()</li>
+            <li>:root()</li>
+            <li>:lang()</li>
+        </ul>
+    </div>
+
+    <div>
+        <button id="find_odd">odd 찾기</button>
+    </div>
+    
+    <div class="choice">
+        <a href="#" class="off1">리셋</a>
+        <a href="#" class="btn1">클릭하면 <em>:eq(4)</em>를 선택합니다.</a>
+        <a href="#" class="btn2">클릭하면 <em>:gt(4)</em>를 선택합니다.</a>
+        <a href="#" class="btn3">클릭하면 <em>:lt(4)</em>를 선택합니다.</a>
+        <a href="#" class="btn4">클릭하면 <em>:first</em>를 선택합니다.</a>
+        <a href="#" class="btn5">클릭하면 <em>:last</em>를 선택합니다.</a>
+        <a href="#" class="btn6">클릭하면 <em>:odd</em>를 선택합니다.</a>
+        <a href="#" class="btn7">클릭하면 <em>:even</em>를 선택합니다.</a>
+        <a href="#" class="btn8`">클릭하면 <em>:not</em>를 선택합니다.</a>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $("#find_odd").click(function(){
+            $("li:contains(odd)").css("background", "cyan")
+        })
+
+        $(".choice .off1").on("click", function(e){
+            e.preventDefault();
+            $(".list li").removeClass("rLine");
+        });
+        $(".choice .btn1").on("click", function(e){
+            e.preventDefault();
+            $(".list li:eq(4)").addClass("rLine");
+        });
+        $(".choice .btn2").on("click", function(e){
+            e.preventDefault();
+            $(".list li:gt(4)").addClass("rLine");
+        });
+        $(".choice .btn3").on("click", function(e){
+            e.preventDefault();
+            $(".list li:lt(4)").addClass("rLine");
+        });
+        $(".choice .btn4").on("click", function(e){
+            e.preventDefault();
+            $(".list li:first").addClass("rLine");
+        });
+        $(".choice .btn5").on("click", function(e){
+            e.preventDefault();
+            $(".list li:last").addClass("rLine");
+        });
+        $(".choice .btn6").on("click", function(e){
+            e.preventDefault();
+            $(".list li:odd").addClass("rLine");
+        });
+        $(".choice .btn7").on("click", function(e){
+            e.preventDefault();
+            $(".list li:even").addClass("rLine");
+        });
+        $(".choice .btn8").on("click", function(e){
+            e.preventDefault();
+            $(".list li:not(:eq(4))").addClass("rLine");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Test</title>
+
+    <!-- position : 위치에만 영향-->
+    <!-- display : 크기에만 영향-->
+    <style>
+        div {
+        border: 1px solid black;
+        background: yellowgreen;
+        width: 50em;
+        height: 10em;
+        }
+        
+        a{
+            border: 1px solid black;
+            width: 10em;
+        }
+            
+        #d2{
+            position: absolute;    
+            left: 20px;
+            top: 20px;
+        }
+
+        #a2{
+            display: block;
+            width: 5em;
+            height: 5em;
+            position: absolute;  
+            left: 10em;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">ABC</div>
+    <div id="d2">123</div>
+    <div id="d3">456</div>
+    <div>
+        <a id="a1">hello</a>
+        <a id="a2">hello</a>
+        <a id="a3">hello</a>
+    </div>
+</body>
+</html>

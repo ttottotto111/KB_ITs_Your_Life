@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자맞추기 jquery</title>
+    <style>
+        #outer{
+            border: 2px solid red;
+            width: 30em;
+            margin: 0 auto;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        var com_num = 0
+
+        //컴퓨터 숫자 초기화
+        function init_num(){
+            com_num = Math.floor(Math.random()*100+1)
+        }
+
+        function check_number(){
+            user_num = $("#user_num").val()
+
+            var msg = "<p>정답입니다.</p>"
+
+            if(com_num == user_num){}
+            else if(com_num<user_num)
+            {
+                msg= "<p>" + user_num + " 숫자가 큽니다." + "</p>"
+                $("#user_num").val("")
+            }
+            else
+            {
+                msg= "<p>" + user_num + " 숫자가 작습니다." + "</p>"
+                $("#user_num").val("")
+            }
+
+            $("#msg").prepend(msg)
+        }
+
+        $(function(){
+            init_num()
+            // 정답확인 버튼 이벤트
+            $("#check_num").click(check_number)
+        })
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <h1>숫자맞추기</h1>
+        <p>1~100사이 컴퓨터의 숫자를 맞춰 보세요.</p>
+        <div>
+            <input id="user_num" placeholder="1~100사이 숫자를 입력">
+            <br>
+            <button id="check_num">정답 확인</button>
+
+            <div id="msg_area">
+                <h3>결과출력</h3>
+                <p id="result"></p>
+                <div id="msg"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

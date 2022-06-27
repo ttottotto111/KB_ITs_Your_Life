@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>계산기</title>
+        <style>
+            #num{text-align:right}
+        </style>
+        
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td colspan = "4"><input type="text" id="num" placeholder="0.0"></td>
+            </tr>
+            <tr>
+                <td><button onclick="num(7)">7</button></td>
+                <td><button onclick="num(8)">8</button></td>
+                <td><button onclick="num(9)">9</button></td>
+                <td><button onclick="num('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="num(4)">4</button></td>
+                <td><button onclick="num(5)">5</button></td>
+                <td><button onclick="num(6)">6</button></td>
+                <td><button onclick="num('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="num(1)">1</button></td>
+                <td><button onclick="num(2)">2</button></td>
+                <td><button onclick="num(3)">3</button></td>
+                <td><button onclick="num('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="num(0)">0</button></td>
+                <td><button onclick="reset()">CE</button></td>
+                <td><button onclick="result()">=</button></td>
+                <td><button onclick="num('/')">/</button></td>
+            </tr>
+        </table>
+        <script>            
+            function num(char){
+                var num = document.querySelector("#num")
+                num.value += char
+            }
+            function reset(){
+                document.querySelector("#num").value = ""
+            }
+            function result(){
+                var msg = document.querySelector("#msg")
+                var num = document.querySelector("#num")
+                var result = eval(num.value)
+                msg.innerHTML += "<li>"+num.value+"="+result+"</li>"
+            }
+        </script>
+        <h1>결 과 이 력</h1>
+        <ol id="msg"></ol>
+    </body>
+</html>

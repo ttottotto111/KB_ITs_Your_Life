@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자맞추기 버튼</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        #outer{
+            border: 2px solid red;
+            width: 30em;
+            text-align: center;
+            margin: 0 auto;}
+        
+        #buttons{
+            width: 25em;
+            height: 25em;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        #buttons > button{
+            width: 3em;
+            height: 3em;
+        }
+    </style>
+    <script>
+        // 컴퓨터 숫자 초기화
+        function init_num(){
+            com_num = Math.floor(Math.random()*100+1)
+        }
+
+        // 버튼 생성
+        function init_buttons()
+        {
+            $("#new_game").click(function(){
+                init_num()
+                $("#buttons > button").removeAttr("style")
+                $("#buttons > button").removeAttr('disabled')
+            })
+
+            buttons = $("#buttons")
+            for(var i=1; i<=100; i++)
+            {
+                buttons.append("<button>"+ i +"</button>")
+                if(i%10 == 0)
+                {
+                    buttons.append("<br>")
+                }
+            }
+
+            //추가한 버튼에 클릭 이벤트 등록
+            $("#buttons > button").click(function(){
+                // $(this).css("background", "blue")
+                t = $(this).text()
+                var msg = "정답입니다."
+
+                if(com_num == t){
+                    $(this).css("background", "blue")
+                    $("#buttons > button").attr("disabled", "disabled")
+                }
+                else if(com_num>t)
+                {
+                    $("#buttons > button:lt("+t+")").attr("disabled", "disabled")
+                    msg = "숫자가 작습니다."
+                }
+                else{
+                    $("#buttons > button:gt("+(t-2)+")").attr("disabled", "disabled")
+                    msg = "숫자가 큽니다."
+                }
+
+                $("#msg").text(msg)
+            })
+        }
+
+        // main
+        $(function(){
+            init_num()
+            init_buttons()
+        })
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <h1>숫자 맞추기</h1>
+        <p>컴퓨터의 숫자에 해당하는 버튼을 누르세요</p>
+        <div id="buttons"></div>
+        <div id="msg">결과 출력</div>
+        <div>
+            <button id="new_game">새 게임</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax test 01</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function click_btn1(){
+            $.ajax({
+                url: "./text01.txt",
+                success : function(data){
+                    alert(data)
+                }
+            })
+
+        }
+
+        function click_btn2(){
+            $.ajax({
+                url: "https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1168064000",
+                success : function(data){
+                    weather = $(data)
+                    ctg = weather.find("category").text()
+                    $("#msg").empty()
+                    $("#msg").append("<h3>"+ctg+"</h3>")
+                    $("#msg").append(weather.find("data").length + "<br>")
+
+                    days = []
+                    days["0"]="오늘"
+                    days["1"]="내일"
+                    days["2"]="모레"
+
+                    weather.find("data").each(function(index, el){
+                        hour = $(el).find("hour").text()
+                        day = $(el).find("day").text()
+                        temp = $(el).find("temp").text()
+                        
+                        $("#msg").append(days[day] + " : " + hour + "시까지 " + temp + "℃" + "<br>")
+                    })
+                }
+            })
+
+        }
+    </script>
+
+    <script>
+
+
+        $(function(){
+            $("#btn1").click(click_btn1)
+            $("#btn2").click(click_btn2)
+            // click_btn1 -> 이벤트 핸들러
+            // 콜백함수 
+        })
+    </script>
+
+</head>
+<body>
+    <button id="btn1">text01.txt</button>
+    <button id="btn2">날씨예보</button>
+    <div id="msg"></div>
+    <div id="msg"></div>
+
+
+</body>
+</html>
